@@ -1,0 +1,39 @@
+{% set imgs = entry.images %}
+{% set firstImg = entry.images.first() %}
+
+
+<div class="item
+{% if featured %}
+    {% if loop.first %}item--large open{% endif %}
+{% endif %} ba lazy
+">
+            <div class="ba__overlay">
+                <div class="ba__text">
+                    <span>
+                        <strong>{{ entry.client }}</strong>: {{ entry.title }}<br>
+                    </span>
+                </div>
+            </div>
+
+
+       
+            {% for image in imgs %}
+                {% if loop.first %}
+                <div class="ba__slide lazy fade" data-src="{{ image.url('medium') }}"></div>
+                <div class="ba__slide lazy fade" data-src="{{ image.url('medium') }}">
+                    <div class="ba__description">
+                        <strong>{{ entry.client }}</strong>: {{ entry.title }}<br>
+                        {{ entry.description }}
+                    </div>
+                </div>
+                {% else %}
+                <div class="ba__slide lazy fade" data-src="{{ image.url('medium') }}"></div>
+                {% endif %}
+    	    {% endfor %}
+    	    
+    	    <span class="ba__arrow ba__arrow--prev"><img src="/arrow_left.svg" alt=""></span>
+            <span class="ba__arrow ba__arrow--next"><img src="/arrow_right.svg" alt=""></span>
+
+</div>
+
+

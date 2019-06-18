@@ -1,0 +1,36 @@
+.footer {
+    background-color: #3c3c3b;
+    padding: 20px 30px;
+    
+    &__logo {
+        width: 30px;
+        cursor: pointer;
+        transition: transform 0.5s;
+        
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+    
+    &__wordmark {
+        width: 150px;
+        margin-left: 30px;
+        margin-bottom: 2px;
+    }
+    
+    &__links {
+        float: right;
+        font-size: 16px;
+        margin-top: 10px;
+        color: white;
+        font-family: "Benton", sans-serif;
+        
+        a {
+            margin-left: 30px;
+            transition: color 0.5s;
+            &:hover {
+                color: #cbcbcf;
+            }
+        }
+    }
+}

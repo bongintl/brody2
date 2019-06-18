@@ -1,0 +1,29 @@
+
+{% set featuredIds = entry.featuredProjects.ids() %}
+{% set allIds = craft.entries.section('work').ids() %}
+
+{% set filteredIds = [] %}
+
+{% for id in allIds %}
+       {% if id not in featuredIds  %}
+       
+            {% set filteredIds = filteredIds|merge([id]) %}
+
+       {% endif %}
+{% endfor %}
+
+
+{% for entry in entry.featuredProjects %}
+    
+    {% include 'partials/mobileItem' %}
+    
+{% endfor %}
+                
+{% for entry in craft.entries.id(filteredIds).order('RAND()').find() %}
+
+    {% include "partials/mobileItem" %}
+
+{% endfor %}
+
+
+ 

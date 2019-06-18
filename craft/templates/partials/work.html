@@ -1,0 +1,36 @@
+
+
+
+<div class="masonry">
+    <div class="grid">
+        
+        {% set featuredIds = entry.featuredProjects.ids() %}
+        {% set allIds = craft.entries.section('work').ids() %}
+    
+        {% set filteredIds = [] %}
+    
+        {% for id in allIds %}
+               {% if id not in featuredIds  %}
+               
+                    {% set filteredIds = filteredIds|merge([id]) %}
+    
+               {% endif %}
+        {% endfor %}
+
+        <div class="item--sizer"></div>
+    
+        {% for entry in entry.featuredProjects %}
+            
+            {% include 'partials/item' with { featured: true } %}
+            
+        {% endfor %}
+                        
+        {% for entry in craft.entries.id(filteredIds).order('RAND()').find() %}
+
+            {% include "partials/item" %}
+
+    	{% endfor %}
+    
+    
+    </div>
+</div>

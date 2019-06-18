@@ -1,0 +1,22 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+
+
+    {% set entry = craft.entries.section('homepage').first() %}
+
+
+
+    {% include "partials/header" %}
+    {% include "partials/bar" %}
+
+    <div class="container active">
+        {% include "partials/work" %}
+        {% include "partials/footer" %}
+    </div>
+
+	
+
+    
+{% endblock %}

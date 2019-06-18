@@ -1,0 +1,42 @@
+{% set imgs = entry.images %}
+{% set firstImg = entry.images.first() %}
+
+
+<div class="item
+{% if featured %}
+    {% if loop.first %}item--large{% endif %}
+{% endif %}
+" style="background-image:url('{{ firstImg.url('medium') }}')">
+
+    <div class="item__overlay">
+        <div class="item__overlay--text">
+            <span>
+            <strong>{{ entry.client }}</strong>: {{ entry.title }}<br>
+            </span>
+        </div>
+        <div class="item__cycle cycle-slideshow" data-cycle-slides="> div" data-cycle-speed="250" data-cycle-timeout="250" data-cycle-manual-speed="250" data-cycle-log="false">
+            {% for image in imgs %}
+                  <div style="background-image:url('{{ image.url('medium') }}')"></div>
+            {% endfor %}
+        </div>
+        <div class="item__slider">
+            {% for image in imgs %}
+            
+                {% if loop.first %}
+                <div style="background-image: url('{{ image.url('medium') }}')"></div>
+                <div class="item__description" style="background-image: url('{{ image.url('medium') }}')">
+                    <div>
+                        <strong>{{ entry.client }}</strong>: {{ entry.title }}<br>
+                        {{ entry.description }}
+                    </div>
+                </div>
+                {% else %}
+                <div style="background-image: url('{{ image.url('medium') }}')"></div>
+                {% endif %}
+    	    {% endfor %}
+	        
+        </div>
+    </div>
+</div>
+
+

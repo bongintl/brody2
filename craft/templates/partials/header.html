@@ -1,0 +1,71 @@
+
+
+<div class="header">
+    
+{% if entry.mobileImages|length != 0 %}
+
+    {% if craft.detect.isMobile %}
+
+        {% set images = entry.mobileImages %}
+
+        <div class="header__bg" data-img='[{% for img in images %}"{{ img.url('small') }}"{% if not loop.last %},{% endif %}{% endfor %}]'>
+        
+    {% else %}
+        
+        {% set images = entry.images %}
+
+        <div class="header__bg" data-img='[{% for img in images %}"{{ img.url('midLarge') }}"{% if not loop.last %},{% endif %}{% endfor %}]'>
+            
+    {% endif %}
+
+
+{% else %}
+
+    {% if craft.detect.isMobile %}
+
+        {% set images = entry.images %}
+
+        <div class="header__bg" data-img='[{% for img in images %}"{{ img.url('medium') }}"{% if not loop.last %},{% endif %}{% endfor %}]'>
+        
+    {% else %}
+        
+        {% set images = entry.images %}
+
+        <div class="header__bg" data-img='[{% for img in images %}"{{ img.url('midLarge') }}"{% if not loop.last %},{% endif %}{% endfor %}]'>
+            
+    {% endif %}
+
+
+
+    
+            
+
+{% endif %}
+
+        
+        <div class="header__wrap">
+              <div class="header__footnote">
+                <p class="c4">Typeset in <strong>C4 Horseferry Medium</strong> created for  <strong>4Creative</strong></p>
+    
+                <p class="calvert-brody">Typeset in <strong>Calvert Brody Medium</strong> created for <strong>Royal College of Art</strong></p>
+                
+                <p class="samsung-one">Typeset in <strong>SamsungOne 700</strong> created for <strong>Samsung Electronics Co., Ltd.</strong></p>
+                
+                <p class="tccc">Typeset in <strong>TCCC Unity</strong> created for <strong>The Coca-Cola Company</strong></p>
+            </div>
+            
+            <div class="header__text">
+              {{ img.url(transform) }}
+                {{ what }}
+                {{ entry.copy }}
+            </div>
+            
+
+            {% include "partials/bar" %}
+            
+        </div>
+
+    </div>
+    
+</div>
+

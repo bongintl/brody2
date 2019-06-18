@@ -1,0 +1,26 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+    {% set entry = craft.entries.section('homepage').first() %}
+
+
+
+    {% include "partials/header" %}
+
+    <div class="container">
+
+        {% if craft.detect.isMobile %}
+
+        {% include "partials/mobileWork" %}
+        
+        {% else %}
+        
+        {% include "partials/work" %}
+
+        {% endif %}
+
+    </div>
+
+    
+{% endblock %}

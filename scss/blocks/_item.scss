@@ -1,0 +1,181 @@
+.item {
+    ::selection {
+        background: none;
+    }
+    background-color: grey;
+    background-size: cover;
+    background-position: center center;
+    float: left;
+    width: 100%;
+    height: 70vw;
+    font-family: 'Benton', sans-serif;
+    line-height: 1.25;
+    color: white;   
+    overflow: hidden;
+    .ba__description {
+        display: none;
+        
+        @include small {
+            display: block;
+        }
+    }
+    @include large {
+        width: 25%;
+        height: 17.5vw;
+    }
+    &--sizer {
+        width: 25%;
+        height: 17.5vw;
+    }
+    
+    &--large {
+        width: 100%;
+        height: 70vw;
+
+        .ba__description {
+            display: block;
+        }
+    
+        @include large {
+            width: 50%;
+            height: 35vw;
+        }
+    }
+  }
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.ba {
+  float: left;
+  overflow: hidden; 
+  position: relative;
+  
+  &.open {
+    .ba__arrow {
+      display: block;
+    }
+    .ba__overlay {
+      display: none;
+    }
+  }
+  
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    
+    @include small {
+        display: none;
+    }
+    
+    &:hover {
+      .ba__text {
+        opacity: 1;
+      }
+    }
+    
+  }
+  
+  &__text {
+    opacity: 0;
+    position: absolute;
+    background: rgba(0,0,0,0.7);
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    
+    span {
+        position: absolute;
+        bottom: 20px;
+    }
+  }
+  
+  &__slide {
+    visibility: hidden;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+  &__description {
+    background: rgba(0,0,0,0.7);
+    padding: 45px;
+    height: 100%;
+    
+    @include small {
+       font-size: 4vw;
+    }
+    
+    @include medium {
+       font-size: 2.25vw;
+    }
+    
+    @include large {
+       font-size: 1.25vw;
+    }
+  }
+  
+  &__arrow {
+    display: none;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+    @include small {
+        display: block;
+    }
+    
+    img {
+      width: 20px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      @include small {
+          width: 15px;
+      }
+    }
+    &--prev {
+      img {
+        left: 10px;
+      }
+    }
+    &--next {
+      right: 0;
+      text-align: right;
+      img {
+        right: 10px;
+      }
+    }
+  }
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
